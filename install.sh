@@ -7,7 +7,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # save original files
 orgdir=~/.vim.$(date +%s)
-mv ~/.vimrc ~/.viminfo ~/.vim ${orgdir}/
+mkdir -p ${orgdir}
+[[ -f ~/.vimrc ]] && mv ~/.vimrc ${orgdir}/
+[[ -f ~/.viminfo ]] && mv ~/.viminfo ${orgdir}/
+[[ -d ~/.vim ]] && mv ~/.vim ${orgdir}/
 
 # install joure
 git clone https://github.com/yhue/joure.git /git/joure
