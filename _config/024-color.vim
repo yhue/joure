@@ -1,4 +1,5 @@
 syntax enable
 set termguicolors
 
-colorscheme nord
+" supress early errors before a color scheme install
+silent! colorscheme nord

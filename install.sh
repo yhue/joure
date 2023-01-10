@@ -17,4 +17,4 @@ chmod 755 ~/.vim && chmod 700 ~/.vim/trace
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
+vim +PlugInstall +qa

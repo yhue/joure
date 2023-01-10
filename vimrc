@@ -53,7 +53,7 @@ let g:plug_shallow = 0
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'arcticicestudio/nord-vim'
 "Plug 'thinca/vim-ambicmd'
