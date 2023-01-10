@@ -1,0 +1,1 @@
+setg display=lastline
