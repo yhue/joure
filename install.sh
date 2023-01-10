@@ -13,6 +13,7 @@ mkdir -p ${orgdir}
 [[ -d ~/.vim ]] && mv ~/.vim ${orgdir}/
 
 # install joure
+[[ -d /git/joure ]] && rm -rf /git/joure
 git clone https://github.com/yhue/joure.git /git/joure
 ln -s /git/joure ~/.vim
 chmod 755 ~/.vim && chmod 700 ~/.vim/trace
