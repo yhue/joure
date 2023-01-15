@@ -9,9 +9,11 @@ mkdir -p ${orgdir}
 [[ -d ~/.vim ]] && mv ~/.vim ${orgdir}/
 
 # install peaberry
-[[ -d /git/peaberry ]] && rm -rf /git/peaberry
-git clone https://github.com/yhue/peaberry.git /git/peaberry
-ln -s /git/peaberry/vim ~/.vim
+peadir=~/.peaberry
+[[ -d ${peadir} ]] && rm -rf ${peadir}
+git clone https://github.com/yhue/peaberry.git ${peadir}
+[[ -d ~/.vim ]] && rm -rf ~/.vim
+ln -s ${peadir}/vim ~/.vim
 chmod 755 ~/.vim && chmod 700 ~/.vim/trace
 
 # install vim-plug
