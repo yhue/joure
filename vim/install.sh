@@ -8,10 +8,10 @@ mkdir -p ${orgdir}
 [[ -f ~/.viminfo ]] && mv ~/.viminfo ${orgdir}/
 [[ -d ~/.vim ]] && mv ~/.vim ${orgdir}/
 
-# install joure
-[[ -d /git/joure ]] && rm -rf /git/joure
-git clone https://github.com/yhue/joure.git /git/joure
-ln -s /git/joure ~/.vim
+# install peaberry
+[[ -d /git/peaberry ]] && rm -rf /git/peaberry
+git clone https://github.com/yhue/peaberry.git /git/peaberry
+ln -s /git/peaberry/vim ~/.vim
 chmod 755 ~/.vim && chmod 700 ~/.vim/trace
 
 # install vim-plug
