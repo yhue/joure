@@ -1,0 +1,220 @@
+[include]
+  path = ~/.gitlocal
+
+[color]
+  branch      = auto
+  diff        = auto
+  grep        = auto
+  interactive = auto
+  status      = auto
+  ui          = auto
+
+[core]
+  editor       = vim
+  fileMode     = true
+  ignoreCase   = false
+  quotePath    = false
+  # Handle EOL as-is, regularize out of git if necessary
+  eol          = native # use platform's native eol
+  autocrlf     = false  # no substitution CR/LF pattern at commit/checkout
+  safecrlf     = true   # block mixed CR/LF pattern at stage
+  #whitespace   =
+  pager        = LESSCHARSET=utf-8 less -R -F -X
+
+[init]
+  defaultBranch = main
+
+[branch]
+  #autosetuprebase = always
+  #autosetupmerge  = false
+
+[help]
+  autoCorrect = 0
+
+[column]
+  branch       = auto
+
+[commit]
+  #template =
+
+[push]
+  default = simple
+
+[pull]
+  ff = only
+  rebase = false
+
+[fetch]
+  prune      = true
+  pruneTags  = false
+  output     = compact
+
+[diff]
+  algorithm        = histogram
+  mnemonicPrefix   = true
+
+[merge]
+  stat = true
+  ff   = false
+
+[rebase]
+  stat = true
+  autosquash = true  # for --fixup
+
+[grep]
+  lineNumber = true
+
+[pretty]
+  ln         = %C(blue)%h%Creset %C(auto,italic)%<(8,trunc)%al%Creset | %s %C(green bold)%d%Creset
+  line       = %C(blue)%h%Creset %C(auto)%as%Creset %C(auto,italic)%<(16,trunc)%al%Creset | %s %C(green bold)%d%Creset
+  linear     = %C(blue)%<(16,trunc)%H%Creset %C(auto)%as%Creset%C(auto)%<(8,trunc)[%ar]%Creset %C(auto,italic)%<(24,trunc)%ae%Creset | %s %C(green bold)%d%Creset
+  linest     = %C(blue)%<(24,trunc)%H%Creset %C(auto)%as%Creset%C(auto)%<(16,trunc)[%ar]%Creset %C(auto,bold)%<(16,trunc)%an%Creset %C(auto,italic)%<(32,trunc)%ae%Creset | %s %C(green bold)%d%Creset
+[http]
+  sslVerify = false
+
+[gui]
+  encoding = utf-8
+
+[web]
+  #browser = google-chrome
+
+[browse-remote "github.com"]
+  top = https://{host}/{path}
+  ref = https://{host}/{path}/tree/{short_ref}
+  rev = https://{host}/{path}/commit/{commit}
+  file = "https://{host}/{path}/blob/{short_rev}/{file}{line && \"#L%d\" % line}"
+
+[url "git@github.com:"]
+    pushInsteadOf = https://github.com/
+
+[credential]
+  #helper = osxkeychain
+
+[alias]
+  # alias
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t: \\2/' | sort | less
+
+  # status
+  s     = status -sb
+  ss    = status
+  si    = status -b --ignored
+
+  # list
+  lf    = ls-files
+  lfu   = ls-files --unmerged
+  lt    = ls-tree
+
+  # cherry
+  lc    = cherry
+  lcv   = cherry -v
+
+  # log
+  wch   = whatchanged
+  rank  = shortlog -s -n --no-merges
+
+  l     = log -n 8 --pretty=ln
+  ln    = log --pretty=ln
+  ll    = log --pretty=line
+  lll   = log --pretty=linear
+  llll  = log --pretty=linest
+  gl    = log --graph --pretty=ln
+  gll   = log --graph --pretty=line
+  glll  = log --graph --pretty=linear
+  gllll = log --graph --pretty=linest
+
+  # diff
+  d     = diff                       # worktree vs indextree
+  dc    = diff --cached              # indextree vs repository
+  ds    = diff --staged              # indextree vs repository
+  d0    = diff HEAD                  # worktree vs repository
+  d1    = diff HEAD~1                # worktree vs repository [1 commit behind]
+  d2    = diff HEAD~2                # worktree vs repository [2 commits behind]
+  d4    = diff HEAD~4                # worktree vs repository [4 commits behind]
+  d-    = diff --ignore-all-space
+
+  # remote
+  rt    = remote
+  #rtl   = remote -v
+  #rts   = remote show
+  #rta   = remote add
+  #rtmv  = remote rename
+  #rtrm  = remote remove
+
+  # show-branch
+  sb    = show-branch --all --color
+
+  # branch
+  b     = branch -vv
+  ba    = branch -avv
+  bm    = branch --merged
+  bnm   = branch --no-merged
+  br    = branch -rvv
+  bd    = !git branch -d "$1" && !git push --delete origin "$1"
+
+  # fetch
+  ft    = fetch
+
+  # rebase
+  rbc   = rebase --continue
+  rba   = rebase --abort
+  rbi   = rebase -i
+  rbi1  = rebase -i HEAD~1
+  rbi2  = rebase -i HEAD~2
+  rbi4  = rebase -i HEAD~4
+  rbi8  = rebase -i HEAD~8
+
+  # merge
+  mg    = merge --no-ff
+
+  # add
+  ad    = add -v
+  adi   = add -i
+  adp   = add -p
+  adal  = add -A
+  adn   = add -N
+
+  # commit
+  c     = commit -v
+  ca    = commit -v --amend
+  ac    = commit -a -v
+  aca   = commit -a -v --amend
+
+  # checkout
+  ch    = checkout
+
+  # switch
+  sw    = switch
+  swc   = switch -c
+
+  # reset
+  # safe by your typing
+
+  # rm
+  rmx   = !git ls-files -z --deleted | xargs -0 git rm
+
+  # submodule
+  sub   = submodule
+  subs  = submodule status
+  subu  = submodule update
+
+  # stash
+  #stl = stash list -p
+  #stp = stash pop
+  #sts = stash save
+
+  # tag
+  tl    = tag -l -n
+  tc    = tag -a
+
+  # cherry-pick
+  pic   = cherry-pick
+  picn  = cherry-pick -n
+
+  # Quickly add a file/dir to .gitignore.
+  ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+
+  # check-ignore
+  # nope, so on
+
+  # browse-remote
+  browse = browse-remote
