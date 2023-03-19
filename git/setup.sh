@@ -2,9 +2,9 @@
 set -eux
 
 # save original files
-orgdir=~/.git.$(date +%s)
-mkdir -p ${orgdir}
-[[ -f ~/.gitconfig ]] && mv ~/.gitconfig ${orgdir}/
+backup=~/.peaberry/backup/$(cat ~/.peaberry/backup/.trace)
+mkdir -p ${backup}
+[[ -f ~/.gitconfig ]] && mv ~/.gitconfig ${backup}/
 
-# setup vim
+# setup git
 ln -s ~/.peaberry/.gitconfig ~/.gitconfig
