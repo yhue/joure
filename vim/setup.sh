@@ -2,11 +2,11 @@
 set -eux
 
 # save original files
-orgdir=~/.vim.$(date +%s)
-mkdir -p ${orgdir}
-[[ -f ~/.vimrc ]] && mv ~/.vimrc ${orgdir}/
-[[ -f ~/.viminfo ]] && mv ~/.viminfo ${orgdir}/
-[[ -d ~/.vim ]] && mv ~/.vim ${orgdir}/
+backup=~/.peaberry/backup/$(cat ~/.peaberry/backup/.trace)
+mkdir -p ${backup}
+[[ -f ~/.vimrc ]] && mv ~/.vimrc ${backup}/
+[[ -f ~/.viminfo ]] && mv ~/.viminfo ${backup}/
+[[ -d ~/.vim ]] && mv ~/.vim ${backup}/
 
 # setup vim
 [[ -d ~/.vim ]] && rm -rf ~/.vim
